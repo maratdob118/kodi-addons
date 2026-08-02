@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="repository.bigping" name="BigPing" version="1.0.0" provider-name="advancedproxy">
+    <requires>
+        <import addon="xbmc.addon" version="20.0.0" />
+    </requires>
+    <extension point="xbmc.addon.repository" name="BigPing">
+        <dir minversion="20.0.0">
+            <info compressed="false">https://maratdob118.github.io/kodi-addons/addons.xml</info>
+            <checksum verify="md5">https://maratdob118.github.io/kodi-addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://maratdob118.github.io/kodi-addons/</datadir>
+            <hashes>sha256</hashes>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">BigPing add-on repository</summary>
+        <description lang="en_GB">Install this repository once to get Advanced Proxy from inside Kodi and to receive updates automatically. The repository index and add-on packages are served over HTTPS from GitHub Pages.</description>
+        <language />
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <forum />
+        <website>https://maratdob118.github.io/kodi-addons/</website>
+        <source>https://github.com/maratdob118/kodi-advanced-proxy</source>
+        <news>
+1.0.0
+- First BigPing repository release, offering Advanced Proxy
+</news>
+    </extension>
+</addon>
+<addon id="service.advancedproxy" name="Advanced Proxy" version="0.3.0" provider-name="advancedproxy">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.service" library="main.py" start="startup" />
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.python.module" library="src" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Local sing-box / Xray proxy with profile switching</summary>
+        <description lang="en_GB">Runs a bundled sing-box or Xray binary as a local proxy on 127.0.0.1. Profiles are added as vless://, hy2:// or trojan:// links and can be switched manually from the addon menu or automatically by latency test. Point Kodi's network proxy at the local port.</description>
+        <language />
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <forum />
+        <website />
+        <source />
+        <news>
+0.3.0
+- Kodi's network proxy is now pointed at the port the local proxy actually listens on, including when a fallback port is used
+- plugin.video.youtube is switched to "use Kodi's proxy" when it is installed; a missing or disabled YouTube addon is skipped without errors
+- Previous Kodi and YouTube proxy settings are backed up before any change and restored when the proxy stops, when auto-configuration is turned off, or when no engine starts; values changed by hand are left alone
+- New setting "Auto-configure Kodi proxy" (on by default) controls the whole integration
+- Releases now ship eight per-platform ZIPs plus one universal ZIP containing every platform's engines, all with the sing-box and Xray license texts and third-party notices
+- Advanced Proxy can be installed and updated from inside Kodi through the new BigPing repository over HTTPS
+
+0.3.0 (RU)
+- Сетевой прокси Kodi теперь указывает на порт, который локальный прокси действительно слушает, в том числе при переходе на запасной порт
+- plugin.video.youtube переключается на использование прокси Kodi, если он установлен; отсутствующее или отключённое дополнение YouTube пропускается без ошибок
+- Прежние настройки прокси Kodi и YouTube сохраняются до внесения изменений и восстанавливаются при остановке прокси, при отключении авто-настройки или если движок не запустился; изменённые вручную значения не трогаются
+- Новая настройка «Auto-configure Kodi proxy» (включена по умолчанию) управляет всей интеграцией
+- В релизы входят восемь ZIP-архивов под конкретные платформы и один универсальный ZIP со всеми движками, во всех есть тексты лицензий sing-box и Xray и уведомления о сторонних компонентах
+- Advanced Proxy можно установить и обновлять прямо из Kodi через новый репозиторий BigPing по HTTPS
+
+0.2.2
+- Relicensed under GPL-3.0-or-later
+- Bundled sing-box v1.13.14 and Xray-core v25.8.3 license texts and third-party notices
+</news>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+</addons>
