@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="repository.maratdob118" name="maratdob118 Repository" version="1.0.0" provider-name="maratdob118">
+    <requires>
+        <import addon="xbmc.addon" version="19.0.0" />
+    </requires>
+    <extension point="xbmc.addon.repository" name="maratdob118 Repository">
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/maratdob118/kodi-addons/main/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/maratdob118/kodi-addons/main/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/maratdob118/kodi-addons/main/zips/</datadir>
+            <hashes>false</hashes>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">maratdob118 add-on repository</summary>
+        <description lang="en_GB">Install this repository once to get Advanced Proxy from inside Kodi and to receive updates automatically. The repository index and add-on packages are served over HTTPS from GitHub.</description>
+        <language />
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <forum />
+        <website>https://github.com/maratdob118/kodi-addons</website>
+        <source>https://github.com/maratdob118/kodi-advanced-proxy</source>
+        <news>
+1.0.0
+- First repository release, offering Advanced Proxy
+</news>
+    </extension>
+</addon>
+<addon id="service.advancedproxy" name="Advanced Proxy" version="0.4.4" provider-name="advancedproxy">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.service" library="main.py" start="startup" />
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.python.module" library="src" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Local sing-box / Xray proxy with profile switching</summary>
+        <description lang="en_GB">Runs a bundled sing-box or Xray binary as a local proxy on 127.0.0.1. Profiles are added as vless://, hy2:// or trojan:// links and can be switched manually from the addon menu or automatically by latency test. Point Kodi's network proxy at the local port.</description>
+        <language />
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <forum />
+        <website />
+        <source />
+        <news>
+0.4.4
+- Xray now also serves an HTTP proxy on the same port as SOCKS, so Kodi addons that use an HTTP proxy (for example YouTube) work with the xray engine
+
+0.4.3
+- The Add dialog is pre-filled with the saved subscription URL, and subscription adding logs its progress to the Kodi log for easier diagnosis
+
+0.4.2
+- Fix Xray failing to start when the geo database has not been downloaded yet (e.g. GitHub unreachable): the ru-blocked routing rule is now only added when the downloaded database is present, and a downloaded database replaces the bundled one
+
+0.4.1
+- Fix subscription adding: the Add dialog now accepts subscription URLs and profiles are fetched immediately
+- Fix the subscription URL button in settings (it no longer relies on unreliable setting substitution)
+- Bound concurrent server pings so large subscriptions do not saturate the device and time out
+
+0.4.0
+- Subscription groups: paste a profile link or a subscription URL, plain/base64/JSON config subscriptions, mirror sync, cascade delete, shared refresh interval
+- Full proxy protocol coverage for both engines: vless, vmess, trojan, shadowsocks (+2022), hysteria2, wireguard, tuic (sing-box), socks, http
+- DNS configuration: UDP, DoH and DoT resolvers plus query strategy for both engines
+- Direct BitTorrent traffic toggle (route torrents around the proxy)
+- Engines bumped to sing-box 1.13.15 and Xray 26.7.28 (Xray now supports Hysteria2)
+
+0.3.0
+- Kodi's network proxy is now pointed at the port the local proxy actually listens on, including when a fallback port is used
+- plugin.video.youtube is switched to "use Kodi's proxy" when it is installed; a missing or disabled YouTube addon is skipped without errors
+- Previous Kodi and YouTube proxy settings are backed up before any change and restored when the proxy stops, when auto-configuration is turned off, or when no engine starts; values changed by hand are left alone
+- New setting "Auto-configure Kodi proxy" (on by default) controls the whole integration
+- Releases now ship eight per-platform ZIPs plus one universal ZIP containing every platform's engines, all with the sing-box and Xray license texts and third-party notices
+- Advanced Proxy can be installed and updated from inside Kodi through the new BigPing repository over HTTPS
+
+0.4.4 (RU)
+- Xray теперь также слушает HTTP-прокси на том же порту, что и SOCKS, поэтому аддоны Kodi, использующие HTTP-прокси (например, YouTube), работают с движком xray
+
+0.4.3 (RU)
+- Диалог «Добавить» предзаполняется сохранённым URL подписки, а добавление подписки пишет ход выполнения в лог Kodi для упрощённой диагностики
+
+0.4.2 (RU)
+- Исправлен запуск Xray, когда гео-база ещё не скачана (например, GitHub недоступен): правило маршрутизации ru-blocked теперь добавляется только при наличии скачанной базы, а скачанная база заменяет встроенную
+
+0.4.1 (RU)
+- Исправлено добавление подписок: диалог «Добавить» теперь принимает URL подписок, профили подтягиваются сразу
+- Исправлена кнопка URL подписки в настройках (больше не зависит от ненадёжной подстановки значения)
+- Ограничен одновременный пинг серверов, чтобы большие подписки не нагружали устройство и не ловили таймауты
+
+0.4.0 (RU)
+- Группы подписок: вставьте ссылку профиля или URL подписки, подписки в формате plain/base64/JSON-конфигов, зеркальная синхронизация, каскадное удаление, общий интервал обновления
+- Полная поддержка прокси-протоколов обоими движками: vless, vmess, trojan, shadowsocks (+2022), hysteria2, wireguard, tuic (sing-box), socks, http
+- Настройка DNS: резолверы UDP, DoH и DoT плюс стратегия запросов для обоих движков
+- Переключатель прямого BitTorrent-трафика (в обход прокси)
+- Движки обновлены до sing-box 1.13.15 и Xray 26.7.28 (Xray теперь поддерживает Hysteria2)
+
+0.3.0 (RU)
+- Сетевой прокси Kodi теперь указывает на порт, который локальный прокси действительно слушает, в том числе при переходе на запасной порт
+- plugin.video.youtube переключается на использование прокси Kodi, если он установлен; отсутствующее или отключённое дополнение YouTube пропускается без ошибок
+- Прежние настройки прокси Kodi и YouTube сохраняются до внесения изменений и восстанавливаются при остановке прокси, при отключении авто-настройки или если движок не запустился; изменённые вручную значения не трогаются
+- Новая настройка «Auto-configure Kodi proxy» (включена по умолчанию) управляет всей интеграцией
+- В релизы входят восемь ZIP-архивов под конкретные платформы и один универсальный ZIP со всеми движками, во всех есть тексты лицензий sing-box и Xray и уведомления о сторонних компонентах
+- Advanced Proxy можно установить и обновлять прямо из Kodi через новый репозиторий BigPing по HTTPS
+
+0.2.2
+- Relicensed under GPL-3.0-or-later
+- Bundled sing-box v1.13.14 and Xray-core v25.8.3 license texts and third-party notices
+</news>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+</addons>
