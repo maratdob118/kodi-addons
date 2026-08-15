@@ -23,5 +23,5 @@ repository add-on is installed; Kodi re-reads
 | --- | --- |
 | `zips/addons.xml` | index of every add-on version this repository offers |
 | `zips/addons.xml.md5` | md5 of `zips/addons.xml`; Kodi polls it to detect changes |
-| `zips/service.advancedproxy/service.advancedproxy-0.4.4.zip` | Advanced Proxy payload (all platforms the repo ships) |
+| `zips/service.advancedproxy/service.advancedproxy-0.4.8.zip` | Advanced Proxy payload (all platforms the repo ships) |
 | `zips/repository.maratdob118/repository.maratdob118-1.0.0.zip` | the repository add-on users install first |
